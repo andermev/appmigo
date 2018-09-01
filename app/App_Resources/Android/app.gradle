@@ -8,11 +8,18 @@
 android {  
   defaultConfig {  
     generatedDensities = []
-    applicationId = "org.nativescript.appmigotabsapp"  
+    applicationId = "org.nativescript.appmigotabsapp"
   }  
   aaptOptions {  
     additionalParameters "--no-version-vectors"  
-  }  
+  }
+  buildTypes {
+      release {
+          minifyEnabled true
+          proguardFiles getDefaultProguardFile('proguard-android.txt'),
+                  'proguard-rules.pro'
+      }
+  }
 } 
 
 def settingsGradlePath
