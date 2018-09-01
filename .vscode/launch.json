@@ -40,7 +40,7 @@
             "sourceMapPathOverrides": {
                 "webpack:///*": "${workspaceRoot}/app/*"
             },
-            "tnsArgs":["--bundle"]
+            "tnsArgs":["--bundle", "--geny vbox86p"]
         },
         {
             "name": "Attach on Android",
