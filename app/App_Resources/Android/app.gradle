@@ -5,14 +5,28 @@
 //	compile 'com.android.support:recyclerview-v7:+'
 //}
 
+dependencies {
+  compile "com.google.android.gms:play-services-base:15.0.1"
+}
+
 android {  
   defaultConfig {  
     generatedDensities = []
-    applicationId = "org.nativescript.appmigotabsapp"  
+    multiDexEnabled true
+    applicationId = "org.nativescript.appmigotabsapp"
   }  
   aaptOptions {  
     additionalParameters "--no-version-vectors"  
-  }  
+  }
+
+  project.ext {
+    googlePlayServicesVersion = "15.0.1"
+  } 
+
+  dexOptions {
+    jumboMode true
+    javaMaxHeapSize "4g"
+  }
 } 
 
 def settingsGradlePath
