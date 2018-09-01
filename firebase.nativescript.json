@@ -1,0 +1,22 @@
+{
+    "using_ios": true,
+    "using_android": true,
+    "firestore": true,
+    "realtimedb": true,
+    "remote_config": true,
+    "messaging": true,
+    "crashlytics": true,
+    "crash_reporting": false,
+    "storage": true,
+    "facebook_auth": true,
+    "google_auth": true,
+    "admob": false,
+    "invites": true,
+    "dynamic_links": true,
+    "ml_kit": true,
+    "ml_kit_text_recognition": true,
+    "ml_kit_barcode_scanning": false,
+    "ml_kit_face_detection": true,
+    "ml_kit_image_labeling": true,
+    "ml_kit_custom_model": true
+}
