@@ -52,5 +52,4 @@ if(settingsGradleFile.exists())
     apply from: settingsGradleFile;
 }
 
-//NOTE: Create project on Firebase. Add google-services.json in the test app to this plugin to function
 apply plugin: 'com.google.gms.google-services'
