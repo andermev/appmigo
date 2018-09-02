@@ -39,6 +39,19 @@
             "stopOnEntry": false,
             "sourceMapPathOverrides": {
                 "webpack:///*": "${workspaceRoot}/app/*"
+            }
+        },
+        {
+            "name": "Launch on Android Bundle",
+            "type": "nativescript",
+            "request": "launch",
+            "platform": "android",
+            "appRoot": "${workspaceRoot}",
+            "sourceMaps": true,
+            "watch": true,
+            "stopOnEntry": false,
+            "sourceMapPathOverrides": {
+                "webpack:///*": "${workspaceRoot}/app/*"
             },
             "tnsArgs":["--bundle", "--geny Nexus 5X API 26 SO 8", "--env.aot", "--env.uglify"]
         },
