@@ -40,7 +40,7 @@
             "sourceMapPathOverrides": {
                 "webpack:///*": "${workspaceRoot}/app/*"
             },
-            "tnsArgs":["--bundle"]
+            "tnsArgs":["--bundle", "--geny Nexus 5X API 26 SO 8", "--env.aot", "--env.uglify"]
         },
         {
             "name": "Attach on Android",

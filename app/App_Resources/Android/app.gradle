@@ -6,7 +6,8 @@
 //}
 
 dependencies {
-  compile "com.google.android.gms:play-services-base:15.0.1"
+  compile "com.google.android.gms:play-services-auth:16.0.0"
+  compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 android {  
@@ -20,7 +21,14 @@ android {
   }
 
   project.ext {
-    googlePlayServicesVersion = "15.0.1"
+    googlePlayServicesVersion = "15.0.0"
+  }
+
+  buildTypes {
+      release {
+          minifyEnabled false
+          proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      }
   } 
 
   dexOptions {
@@ -43,3 +51,6 @@ if(settingsGradleFile.exists())
 {
     apply from: settingsGradleFile;
 }
+
+//NOTE: Create project on Firebase. Add google-services.json in the test app to this plugin to function
+apply plugin: 'com.google.gms.google-services'
