@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { isAndroid } from "platform";
 import { SelectedIndexChangedEventData, TabView, TabViewItem } from "tns-core-modules/ui/tab-view";
+import { initFirebase } from "./shared/firebase.common";
 
 @Component({
     selector: "ns-app",
@@ -14,8 +15,8 @@ export class AppComponent implements OnInit {
         // Use the component constructor to inject providers.
     }
 
-    ngOnInit(): void {
-        // Init your component properties here.
+    ngOnInit() {
+        initFirebase();
     }
 
     getIconSource(icon: string): string {
