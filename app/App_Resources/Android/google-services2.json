@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "932881345159",
+    "firebase_url": "https://geoalert-4888b.firebaseio.com",
+    "project_id": "geoalert-4888b",
+    "storage_bucket": "geoalert-4888b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:932881345159:android:b848ccc057a35a28",
+        "android_client_info": {
+          "package_name": "org.nativescript.appmigotabsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "932881345159-uu0m4tuqokjmgqvu70qslshcns7sq4p5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfDBtqz11pO7_OB5POva9Wuv2V6T0RAT4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

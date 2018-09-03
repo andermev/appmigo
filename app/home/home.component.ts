@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
-import { HomeService } from "~/home/shared/home.service";
+import { HomeService } from "~/shared/home/home.service";
 import { DataService, IDataItem } from "../core/data.service";
 
 @Component({
