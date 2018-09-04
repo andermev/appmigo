@@ -17,7 +17,8 @@ android {
     applicationId = "org.nativescript.appmigotabsapp"
   }  
   aaptOptions {  
-    additionalParameters "--no-version-vectors"  
+    additionalParameters "--no-version-vectors"
+    noCompress "tflite"
   }
 
   project.ext {
@@ -51,5 +52,3 @@ if(settingsGradleFile.exists())
 {
     apply from: settingsGradleFile;
 }
-
-apply plugin: 'com.google.gms.google-services'
