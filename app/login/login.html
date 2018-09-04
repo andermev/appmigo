@@ -1,0 +1,18 @@
+<StackLayout #container id="login">
+  <Image src="res://logo_login" stretch="none" horizontalAlignment="center"></Image>
+
+  <TextField #email hint="Email Address" keyboardType="email" [(ngModel)]="user.email"
+  autocorrect="false" autocapitalizationType="none"></TextField>
+  <TextField #password hint="Password" secure="true" [(ngModel)]="user.password"></TextField>
+
+  <Button [text]="isLoggingIn ? 'Sign in' : 'Sign up'" class="submit-button" (tap)="submit('normal')"></Button>
+  <StackLayout id="fb-button"  orientation="horizontal" (tap)="submit('facebook')" >
+    <Image src="res://facebookicon"  width="10%" height="70" margin="8"></Image>
+    <Label text="Login with Facebook" verticalAlignment="center" paddingLeft="35"></Label>
+  </StackLayout>
+  <StackLayout id="google-button"  orientation="horizontal" (tap)="submit('google')" >
+    <Image src="res://googleicon"  width="10%" height="70" margin="10"></Image>
+    <Label text="Login with Google" verticalAlignment="center" paddingLeft="39"></Label>
+  </StackLayout>
+  <Button [text]="isLoggingIn ? 'Sign up' : 'Back to login'" (tap)="toggleDisplay()"></Button>
+</StackLayout>

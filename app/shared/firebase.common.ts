@@ -1,3 +1,4 @@
+import { UserService } from "~/shared/user/user.service";
 import { Config } from "./config";
 
 const firebase = require("nativescript-plugin-firebase");
@@ -22,6 +23,9 @@ export function initFirebase() {
             console.log(data.loggedIn ? "Logged in to firebase" : "Logged out from firebase");
             if (data.loggedIn) {
                 console.log("user's email address: " + (data.user.email ? data.user.email : "N/A"));
+                UserService.token = data.user.uid;
+            } else {
+                UserService.token = "";
             }
         }
     }).then((instance) => {

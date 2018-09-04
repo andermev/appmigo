@@ -7,7 +7,7 @@ import { initFirebase, initLoginFacebook, initLoginGoogle } from "./shared/fireb
     selector: "ns-app",
     moduleId: module.id,
     templateUrl: "app.component.html",
-    styleUrls: ["./app.component.scss"]
+    styleUrls: ["./_app.component.scss"]
 })
 export class AppComponent implements OnInit {
 
@@ -17,8 +17,8 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         initFirebase();
-        initLoginFacebook();
-        initLoginGoogle();
+        // initLoginFacebook();
+        // initLoginGoogle();
     }
 
     getIconSource(icon: string): string {
