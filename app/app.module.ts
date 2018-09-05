@@ -1,6 +1,7 @@
 import { NgModule, NgModuleFactoryLoader, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
+import { HomeService } from "~/shared/home/home.service";
 import { AppRoutingModule, COMPONENTS } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { CoreModule } from "./core/core.module";
@@ -20,6 +21,9 @@ import { CoreModule } from "./core/core.module";
     ],
     schemas: [
         NO_ERRORS_SCHEMA
+    ],
+    providers: [
+        HomeService
     ]
 })
 export class AppModule { }
