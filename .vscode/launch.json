@@ -67,7 +67,7 @@
             "sourceMapPathOverrides": {
                 "webpack:///*": "${workspaceRoot}/app/*"
             },
-            "tnsArgs":["--bundle"]
+            "tnsArgs":["--bundle", "--log=trace"]
         },
         {
             "name": "Attach on Android",
