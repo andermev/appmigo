@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { DataService, IDataItem } from "../core/data.service";
+import { DataService, IDataItem } from "~/core/data.service";
 
 @Component({
     selector: "ItemDetail",

@@ -1,5 +1,5 @@
-import { Location } from "~/model/location.model";
-import { User } from "~/model/user.model";
+import { Location } from "~/models/location.model";
+import { User } from "~/models/user.model";
 
 export class Notification {
     type: string;
