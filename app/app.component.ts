@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         initFirebase();
-        // initLoginFacebook();
+        initLoginFacebook();
         // initLoginGoogle();
     }
 
