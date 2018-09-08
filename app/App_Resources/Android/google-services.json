@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:932881345159:android:b848ccc057a35a28",
         "android_client_info": {
-          "package_name": "org.nativescript.appmigotabsapp"
+          "package_name": "org.nativescript.appmigo"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "932881345159-mknjlf8o4865pbm3147huvehck7p5j29.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "org.nativescript.appmigotabsapp",
+            "package_name": "org.nativescript.appmigo",
             "certificate_hash": "2529d74eda2d7c3151e3fe691b72d2a461b4b960"
           }
         },

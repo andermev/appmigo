@@ -1,6 +1,6 @@
 {
   "nativescript": {
-    "id": "org.nativescript.appmigotabsapp",
+    "id": "org.nativescript.appmigo",
     "tns-android": {
       "version": "4.2.0"
     },
