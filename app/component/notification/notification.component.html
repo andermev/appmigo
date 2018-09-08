@@ -5,7 +5,15 @@
 <GridLayout class="page page-content">
     <ListView [items]="items" class="list-group">
         <ng-template let-item="item">
-            <Label [nsRouterLink]="['../item', item]" [text]="item.type" class="list-group-item"></Label>
+            <Label [text]="item.type" class="list-group-item"></Label>
         </ng-template>
     </ListView>
+    <ListView [items]="myCities$ | async" height="200" *ngIf="myCities$">
+        <ng-template let-item="item">
+          <StackLayout>
+            <Label style="color: red" [text]='item.type'></Label>
+          </StackLayout>
+        </ng-template>
+      </ListView>
 </GridLayout>
+
