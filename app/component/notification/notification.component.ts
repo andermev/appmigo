@@ -10,19 +10,11 @@ import { WarningService } from "~/shared/warning/warning.service";
     templateUrl: "./notification.component.html"
 })
 export class NotificationComponent implements OnInit {
-    items = [];
-    myCities$: Observable<Array<Notification>>;
+    notifications$: Observable<Array<Notification>>;
 
-    constructor(private warningService: WarningService, private router: RouterExtensions) { }
+    constructor(private warningService: WarningService) { }
 
     ngOnInit(): void {
-        // this.warningService.getNotifications()
-        //     .subscribe((data) => data.forEach((doc) => {
-        //         console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
-        //         this.items.push(doc.data());
-        //     }),
-        //     () => console.log("Error Get Notification"))
-        //     .catch((err) => console.log("Get failed, error: " + err));
-        this.myCities$ = this.warningService.firestoreCollectionObservable();
+        this.notifications$ = this.warningService.firestoreCollectionObservable();
     }
 }

@@ -3,12 +3,7 @@
 </ActionBar>
 
 <GridLayout class="page page-content">
-    <ListView [items]="items" class="list-group">
-        <ng-template let-item="item">
-            <Label [text]="item.type" class="list-group-item"></Label>
-        </ng-template>
-    </ListView>
-    <ListView [items]="myCities$ | async" height="200" *ngIf="myCities$">
+    <ListView [items]="notifications$ | async" height="200" *ngIf="notifications$">
         <ng-template let-item="item">
           <StackLayout>
             <Label style="color: red" [text]='item.type'></Label>
