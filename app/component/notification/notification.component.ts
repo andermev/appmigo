@@ -9,20 +9,21 @@ import { WarningService } from "~/shared/warning/warning.service";
 @Component({
     selector: "Notification",
     moduleId: module.id,
-    templateUrl: "./notification.component.html"
+    templateUrl: "./notification.component.html",
+    styleUrls: ["./notification.component.scss"]
 })
 export class NotificationComponent implements OnInit, OnDestroy {
-    private _notifications: ObservableArray<Notification> = new ObservableArray<Notification>([]);
     private _isLoading: boolean = false;
+    private _notifications: ObservableArray<Notification> = new ObservableArray<Notification>([]);
     private _notificationSubscription: Subscription;
 
-    constructor(private warningService: WarningService) { }
+    constructor(private _warningService: WarningService) { }
 
     ngOnInit(): void {
         if (!this._notificationSubscription) {
             this._isLoading = true;
 
-            this._notificationSubscription = this.warningService.getNotificationsByUser()
+            this._notificationSubscription = this._warningService.getNotificationsByUser()
                 .pipe(finalize(() => this._isLoading = false))
                 .subscribe((notifications: Array<Notification>) => {
                     this._notifications = new ObservableArray(notifications);
