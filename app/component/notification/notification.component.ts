@@ -15,6 +15,6 @@ export class NotificationComponent implements OnInit {
     constructor(private warningService: WarningService) { }
 
     ngOnInit(): void {
-        this.notifications$ = this.warningService.firestoreCollectionObservable();
+        this.notifications$ = this.warningService.getNotificationsByUser();
     }
 }

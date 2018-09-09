@@ -13,10 +13,10 @@ export class WarningService {
 
     constructor(private zone: NgZone) { }
 
-    firestoreCollectionObservable(): Observable<Array<Notification>> {
+    getNotificationsByUser(): Observable<Array<Notification>> {
         return Observable.create((subscriber) => {
-            const colRef: firestore.CollectionReference = firebase.firestore().collection("alerts");
-            colRef.onSnapshot((snapshot: firestore.QuerySnapshot) => {
+            const notRef: firestore.CollectionReference = firebase.firestore().collection("alerts");
+            notRef.onSnapshot((snapshot: firestore.QuerySnapshot) => {
                 this.zone.run(() => {
                     this.notifications = [];
                     snapshot.forEach((docSnap) => {
