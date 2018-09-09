@@ -1,6 +1,7 @@
 import { Injectable, NgZone } from "@angular/core";
 import { firestore } from "nativescript-plugin-firebase";
-import { Observable } from "rxjs";
+import { Observable, throwError } from "rxjs";
+import { catchError } from "rxjs/operators";
 import { Notification } from "~/models/notification.model";
 
 const firebase = require("nativescript-plugin-firebase/app");
@@ -9,7 +10,7 @@ const firebase = require("nativescript-plugin-firebase/app");
 export class WarningService {
     notification: Notification;
 
-    private notifications: Array<Notification> = [];
+    private _notifications: Array<Notification> = [];
 
     constructor(private zone: NgZone) { }
 
@@ -18,16 +19,29 @@ export class WarningService {
             const notRef: firestore.CollectionReference = firebase.firestore().collection("alerts");
             notRef.onSnapshot((snapshot: firestore.QuerySnapshot) => {
                 this.zone.run(() => {
-                    this.notifications = [];
-                    snapshot.forEach((docSnap) => {
-                        console.log("Document Firebase: " + `${docSnap.id} => ${JSON.stringify(docSnap.data())}`);
-                        this.notifications.push(new Notification(docSnap.data()));
-                    });
-                    subscriber.next(this.notifications);
+                    const results = this.handleSnapshot(snapshot);
+                    subscriber.next(results);
                 });
             });
         }, (err) => {
             console.log(`Encountered error: ${err}`);
-        });
+        }).pipe(catchError(this.handleErrors));
+    }
+
+    private handleSnapshot(snapshot: firestore.QuerySnapshot): Array<Notification> {
+        this._notifications = [];
+
+        if (snapshot) {
+            snapshot.forEach((docSnap) => {
+                console.log("Document Firebase: " + `${docSnap.id} => ${JSON.stringify(docSnap.data())}`);
+                this._notifications.push(new Notification(docSnap.data()));
+            });
+        }
+
+        return this._notifications;
+    }
+
+    private handleErrors(error: Response): Observable<never> {
+        return throwError(error);
     }
 }

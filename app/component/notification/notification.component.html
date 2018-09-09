@@ -3,10 +3,10 @@
 </ActionBar>
 
 <GridLayout class="page page-content">
-    <ListView [items]="notifications$ | async" height="200" *ngIf="notifications$">
-        <ng-template let-item="item">
+    <ListView [items]="notifications" height="200" class="list-group">
+        <ng-template tkListItemTemplate let-notif="item">
           <StackLayout>
-            <Label style="color: red" [text]='item.type'></Label>
+            <Label style="color: red" [text]='notif.type'></Label>
           </StackLayout>
         </ng-template>
       </ListView>
