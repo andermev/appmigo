@@ -1,3 +1,5 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" xmlns:maps="nativescript-google-maps-sdk">
+
 <ActionBar class="action-bar">
   <NavigationButton ios:visibility="collapsed"></NavigationButton>
   <Label class="action-bar-title" text="Notifications" horizontalAlignment="center"></Label>
@@ -14,6 +16,9 @@
                       </FormattedString>
                   </Label>
                   <StackLayout row="1" class="hr-light m-t-5 m-b-5" colSpan="2"></StackLayout>
+                  <GridLayout row="2" stretch="aspectFill" height="120" class="m-r-20">
+                      <!-- <map></map> -->
+                  </GridLayout>
                   <StackLayout row="2" col="1" verticalAlignment="center" class="list-group-item-text">
                       <Label class="p-b-10">
                         <FormattedString ios:fontFamily="system">
