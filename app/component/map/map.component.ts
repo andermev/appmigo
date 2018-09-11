@@ -92,9 +92,9 @@ export class MapComponent {
         marker.userData = {index: 1};
         marker.visible = true;
         this.mapView.addMarker(marker);
-        this.mapView.longitude = this._latitude;
-        this.mapView.latitude = this._longitude;
-        this.mapView.zoom = this._zoom;
+        // this.mapView.longitude = this._latitude;
+        // this.mapView.latitude = this._longitude;
+        // this.mapView.zoom = this._zoom;
         this._doZoom();
     }
 
