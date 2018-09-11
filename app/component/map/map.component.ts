@@ -86,6 +86,7 @@ export class MapComponent {
         marker.title = "Sydney";
         marker.snippet = "Australia";
         marker.userData = {index: 1};
+        marker.visible = true;
         this.mapView.addMarker(marker);
     }
 
