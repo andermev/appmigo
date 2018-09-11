@@ -2,8 +2,12 @@ import { Component, Input } from "@angular/core";
 import { registerElement } from "nativescript-angular/element-registry";
 import { MapView, Marker, Position } from "nativescript-google-maps-sdk";
 
+import { isAndroid, isIOS } from "platform";
+
 // Important - must register MapView plugin in order to use in Angular templates
 registerElement("MapView", () => MapView);
+
+declare var com: any;
 
 @Component({
     moduleId: module.id,
@@ -88,6 +92,10 @@ export class MapComponent {
         marker.userData = {index: 1};
         marker.visible = true;
         this.mapView.addMarker(marker);
+        this.mapView.longitude = this._latitude;
+        this.mapView.latitude = this._longitude;
+        this.mapView.zoom = this._zoom;
+        this._doZoom();
     }
 
     onCoordinateTapped(args) {
@@ -106,5 +114,21 @@ export class MapComponent {
 
     onCameraMove(args) {
         console.log("Camera moving: " + JSON.stringify(args.camera));
+    }
+
+    private _doZoom() {
+
+        if (isAndroid) {
+            const builder = new com.google.android.gms.maps.model.LatLngBounds.Builder();
+            this.mapView.findMarker((marker) => {
+                builder.include(marker.android.getPosition());
+
+                return false;
+            });
+            const bounds = builder.build();
+            const padding: number = 100;
+            const cu = com.google.android.gms.maps.CameraUpdateFactory.newLatLngBounds(bounds, padding);
+            this.mapView.gMap.animateCamera(cu);
+        }
     }
 }
