@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { registerElement } from "nativescript-angular/element-registry";
 import { MapView, Marker, Position } from "nativescript-google-maps-sdk";
 
@@ -13,16 +13,65 @@ registerElement("MapView", () => MapView);
 })
 export class MapComponent {
 
-    latitude =  -33.86;
-    longitude = 151.20;
-    zoom = 8;
-    minZoom = 0;
-    maxZoom = 22;
-    bearing = 0;
-    tilt = 0;
-    padding = [40, 40, 40, 40];
     mapView: MapView;
     lastCamera: string;
+
+    private _latitude;
+    private _longitude;
+    private _zoom;
+    private _minZoom;
+    private _maxZoom;
+    private _bearing;
+    private _tilt;
+    private _padding;
+
+    @Input()
+    set latitude(latitude: number) {
+        this._latitude = latitude || -33.86;
+    }
+    get latitude(): number { return this._latitude; }
+
+    @Input()
+    set longitude(longitude: number) {
+        this._longitude = longitude || 151.20;
+    }
+    get longitude(): number { return this._longitude; }
+
+    @Input()
+    set zoom(zoom: number) {
+        this._zoom = zoom || 8;
+    }
+    get zoom(): number { return this._zoom; }
+
+    @Input()
+    set minZoom(minZoom: number) {
+        this._minZoom = minZoom || 0;
+    }
+    get minZoom(): number { return this._minZoom; }
+
+    @Input()
+    set maxZoom(maxZoom: number) {
+        this._maxZoom = maxZoom || 22;
+    }
+    get maxZoom(): number { return this._maxZoom; }
+
+    @Input()
+    set bearing(bearing: number) {
+        this._bearing = bearing || 0;
+    }
+    get bearing(): number { return this._bearing; }
+
+    @Input()
+    set tilt(tilt: number) {
+        this._tilt = tilt || 0;
+    }
+    get tilt(): number { return this._tilt; }
+
+    @Input()
+    set padding(padding: number) {
+        this._padding = padding || [40, 40, 40, 40];
+    }
+    get padding(): number { return this._padding; }
 
     // Map events
     onMapReady(event) {
@@ -33,7 +82,7 @@ export class MapComponent {
         console.log("Setting a marker...");
 
         const marker = new Marker();
-        marker.position = Position.positionFromLatLng(-33.86, 151.20);
+        marker.position = Position.positionFromLatLng(this._latitude, this._longitude);
         marker.title = "Sydney";
         marker.snippet = "Australia";
         marker.userData = {index: 1};
