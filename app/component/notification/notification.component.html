@@ -15,7 +15,8 @@
                   </Label>
                   <StackLayout row="1" class="hr-light m-t-5 m-b-5" colSpan="2"></StackLayout>
                   <GridLayout row="2" stretch="aspectFill" height="120" class="m-r-20">
-                    <map [latitude]="notif.location.latitude" [longitude]="notif.location.longitude" [zoomLevel]="13"></map>
+                    <map [latitude]="notif.location.latitude" [longitude]="notif.location.longitude" 
+                        [zoomLevel]="16" (mapReady)="onMapReady($event)" accessToken=""></map>
                 </GridLayout>
                   <StackLayout row="2" col="1" verticalAlignment="center" class="list-group-item-text">
                       <Label class="p-b-10">

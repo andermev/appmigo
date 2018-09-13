@@ -86,7 +86,7 @@ export class MapComponent {
     set disableScroll(disableScroll: boolean) {
         this._disableScroll = disableScroll || false;
     }
-    get didisableScrollsableZoom(): boolean { return this._disableScroll; }
+    get disableScrollsableZoom(): boolean { return this._disableScroll; }
 
     @Input()
     set disableTilt(disableTilt: boolean) {
