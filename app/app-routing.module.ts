@@ -2,12 +2,13 @@ import { NgModule } from "@angular/core";
 import { Routes } from "@angular/router";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 
+import { MapComponent } from "~/component/map/map.component";
 import { LoginComponent } from "~/core/auth/login/login.component";
 import { BrowseComponent } from "./component/browse/browse.component";
 import { NotificationComponent } from "./component/notification/notification.component";
 import { SearchComponent } from "./component/search/search.component";
 
-export const COMPONENTS = [BrowseComponent, NotificationComponent, SearchComponent, LoginComponent];
+export const COMPONENTS = [BrowseComponent, NotificationComponent, SearchComponent, LoginComponent, MapComponent];
 
 const routes: Routes = [
     { path: "", redirectTo: "/(notificationTab:notification//browseTab:browse//searchTab:search)", pathMatch: "full" },
