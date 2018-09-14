@@ -53,7 +53,7 @@
             "sourceMapPathOverrides": {
                 "webpack:///*": "${workspaceRoot}/app/*"
             },
-            "tnsArgs":["--bundle", "--geny Nexus 5X API 26 SO 8", "--env.aot", "--env.uglify", "--env.snapshot"]
+            "tnsArgs":["--bundle", "--env.aot", "--env.uglify", "--env.snapshot", "--log=trace"]
         },
         {
             "name": "Launch on Android Bundle",
