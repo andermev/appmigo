@@ -11,9 +11,13 @@ export class NotificationService {
     notification: Notification;
 
     private _notifications: Array<Notification> = [];
+    private _editNotification: Notification;
 
     constructor(private zone: NgZone) { }
 
+    /**
+     * Start services to notification list.
+     */
     getNotificationsByUser(): Observable<Array<Notification>> {
         return Observable.create((subscriber) => {
             const notRef: firestore.CollectionReference = firebase.firestore().collection("alerts");
@@ -42,6 +46,43 @@ export class NotificationService {
         }).pipe(catchError(this.handleErrors));
     }
 
+    /**
+     * End services notification list.
+     */
+
+    /**
+     * Start services to edit and create notification.
+     */
+    startEdit(id: string): Notification {
+        this._editNotification = null;
+
+        return this.getEditableNotificationById(id);
+    }
+
+    getEditableNotificationById(id: string): Notification {
+        if (!this._editNotification || this._editNotification.id !== id) {
+            const notification = this.getNotificationById(id);
+
+            // get fresh editable copy of notification model
+            this._editNotification = new Notification(notification);
+        }
+
+        return this._editNotification;
+    }
+
+    getNotificationById(id: string): Notification {
+        if (!id) {
+            return;
+        }
+
+        return this._notifications.filter((notification) => {
+            return notification.id === id;
+        })[0];
+    }
+    /**
+     * End services to edit and create notification.
+     */
+
     private handleSnapshot(snapshot: firestore.QuerySnapshot): Array<Notification> {
         this._notifications = [];
 
@@ -54,6 +95,7 @@ export class NotificationService {
 
         return this._notifications;
     }
+    
 
     private handleErrors(error: Response): Observable<never> {
         return throwError(error);
