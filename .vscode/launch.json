@@ -53,7 +53,7 @@
             "sourceMapPathOverrides": {
                 "webpack:///*": "${workspaceRoot}/app/*"
             },
-            "tnsArgs":["--bundle", "--geny Nexus 5X API 26 SO 8", "--env.aot", "--env.uglify"]
+            "tnsArgs":["--bundle", "--geny Nexus 5X API 26 SO 8", "--env.aot", "--env.uglify", "--env.snapshot"]
         },
         {
             "name": "Launch on Android Bundle",
@@ -67,7 +67,7 @@
             "sourceMapPathOverrides": {
                 "webpack:///*": "${workspaceRoot}/app/*"
             },
-            "tnsArgs":["--bundle", "--log=trace"]
+            "tnsArgs":["--bundle", "--log=trace", "--env.uglify", "--env.snapshot"]
         },
         {
             "name": "Attach on Android",
