@@ -17,7 +17,8 @@ export class NotificationComponent implements OnInit, OnDestroy {
     private _notifications: ObservableArray<Notification> = new ObservableArray<Notification>([]);
     private _notificationSubscription: Subscription;
 
-    constructor(private _notificationService: NotificationService) { }
+    constructor(private _notificationService: NotificationService,
+                private _routerExtensions: RouterExtensions) { }
 
     ngOnInit(): void {
         if (!this._notificationSubscription) {
@@ -38,6 +39,22 @@ export class NotificationComponent implements OnInit, OnDestroy {
 
     get isLoading(): boolean {
         return this._isLoading;
+    }
+
+    onBackButtonTap(): void {
+        this._routerExtensions.backToPreviousPage();
+    }
+
+    onEditButtonTap(): void {
+        this._routerExtensions.navigate(["notification-detail-edit/:id", this._notifications.id],
+            {
+                animated: true,
+                transition: {
+                    name: "slideTop",
+                    duration: 200,
+                    curve: "ease"
+                }
+            });
     }
 
     ngOnDestroy(): void {

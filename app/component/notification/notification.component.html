@@ -1,6 +1,10 @@
 <ActionBar class="action-bar">
-  <NavigationButton ios:visibility="collapsed"></NavigationButton>
-  <Label class="action-bar-title" text="Notifications" horizontalAlignment="center"></Label>
+    <NavigationButton ios:visibility="collapsed"></NavigationButton>
+    <Label class="action-bar-title" text="Notifications" horizontalAlignment="center"></Label>
+
+    <ActionItem ios.position="right" android.position="right" (tap)="onEditButtonTap()">
+        <Label text="Edit" class="action-item"></Label>
+    </ActionItem>
 </ActionBar>
 
 <GridLayout class="page page-content">
