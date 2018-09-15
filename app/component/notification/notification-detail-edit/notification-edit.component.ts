@@ -2,25 +2,19 @@ import { Component, OnInit } from "@angular/core";
 import { PageRoute, RouterExtensions } from "nativescript-angular/router";
 import { switchMap } from "rxjs/operators";
 import { alert } from "ui/dialogs";
-
 import { NotificationService } from "../../../shared/notification/notification.service";
-import { carClassList, carDoorList, carSeatList, carTransmissionList } from "./constants";
 
 import { Notification } from "~/models/notification.model";
 
 @Component({
     moduleId: module.id,
-    selector: "CarDetailEdit",
-    templateUrl: "./car-detail-edit.component.html",
-    styleUrls: ["./car-detail-edit.component.scss"]
+    selector: "NotificationDetailEdit",
+    templateUrl: "./notification-detail-edit.component.html",
+    styleUrls: ["./notification-detail-edit.component.scss"]
 })
-export class CarDetailEditComponent implements OnInit {
+export class NotificationDetailEditComponent implements OnInit {
     private _notification: Notification;
-    private _carClassOptions: Array<string> = [];
-    private _carDoorOptions: Array<number> = [];
-    private _carSeatOptions: Array<string> = [];
-    private _carTransmissionOptions: Array<string> = [];
-    private _isCarImageDirty: boolean = false;
+    private _isNotificationImageDirty: boolean = false;
     private _isUpdating: boolean = false;
 
     constructor(
@@ -30,14 +24,13 @@ export class CarDetailEditComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.initializeEditOptions();
 
         this._pageRoute.activatedRoute
             .pipe(switchMap((activatedRoute) => activatedRoute.params))
             .forEach((params) => {
-                const carId = params.id;
+                const notificationId = params.id;
 
-                this._notification = this._notificationService.startEdit(carId);
+                this._notification = this._notificationService.startEdit(notificationId);
             });
     }
 
@@ -49,77 +42,37 @@ export class CarDetailEditComponent implements OnInit {
         return this._notification;
     }
 
-    // get pricePerDay(): number {
-    //     return this._car.price;
-    // }
-
-    // set pricePerDay(value: number) {
-    //     // force iOS UISlider to work with discrete steps
-    //     this._car.price = Math.round(value);
-    // }
-
-    // get luggageValue(): number {
-    //     return this._car.luggage;
-    // }
-
-    // set luggageValue(value: number) {
-    //     // force iOS UISlider to work with discrete steps
-    //     this._car.luggage = Math.round(value);
-    // }
-
-    get carClassOptions(): Array<string> {
-        return this._carClassOptions;
+    get notificationImageUrl(): string {
+        return this._notification.imageUrl;
     }
 
-    get carDoorOptions(): Array<number> {
-        return this._carDoorOptions;
+    set notificationImageUrl(value: string) {
+        this._notification.imageUrl = value;
+        this._isNotificationImageDirty = true;
     }
-
-    get carSeatOptions(): Array<string> {
-        return this._carSeatOptions;
-    }
-
-    get carTransmissionOptions(): Array<string> {
-        return this._carTransmissionOptions;
-    }
-
-    // get carImageUrl(): string {
-    //     return this._car.imageUrl;
-    // }
-
-    // set carImageUrl(value: string) {
-    //     this._car.imageUrl = value;
-    //     this._isCarImageDirty = true;
-    // }
 
     onCancelButtonTap(): void {
         this._routerExtensions.backToPreviousPage();
     }
 
     onDoneButtonTap(): void {
-        /* ***********************************************************
-        * By design this app is set up to work with read-only sample data.
-        * Follow the steps in the "Firebase database setup" section in app/readme.md file
-        * and uncomment the code block below to make it editable.
-        *************************************************************/
-
-        /* ***********************************************************
         let queue = Promise.resolve();
 
         this._isUpdating = true;
 
-        if (this._isCarImageDirty && this._car.imageUrl) {
+        if (this._isNotificationImageDirty && this._notification.imageUrl) {
             queue = queue
-                .then(() => this._carService.uploadImage(this._car.imageStoragePath, this._car.imageUrl))
+                .then(() => this._notificationService.uploadImage(this._notification.imageStoragePath,
+                    this._notification.imageUrl))
                 .then((uploadedFile: any) => {
-                    this._car.imageUrl = uploadedFile.url;
+                    this._notification.imageUrl = uploadedFile.url;
                 });
         }
 
-        queue.then(() => this._carService.update(this._car))
+        queue.then(() => this._notificationService.update(this._notification))
             .then(() => {
                 this._isUpdating = false;
-                this._routerExtensions.navigate(["/cars"], {
+                this._routerExtensions.navigate(["/notifications"], {
                     clearHistory: true,
                     animated: true,
                     transition: {
@@ -131,42 +84,9 @@ export class CarDetailEditComponent implements OnInit {
             })
             .catch((errorMessage: any) => {
                 this._isUpdating = false;
-                alert({ title: "Oops!", message: "Something went wrong. Please try again.", okButtonText: "Ok" });
+                alert({ title: "Oops!",
+                        message: "Something went wrong. Please try again. Error: " + errorMessage,
+                        okButtonText: "Ok" });
             });
-        *************************************************************/
-
-        /* ***********************************************************
-        * Comment out the code block below if you made the app editable.
-        *************************************************************/
-        const readOnlyMessage = "Check out the \"Firebase database setup\" section in the readme file to make it editable."; // tslint:disable-line:max-line-length
-        const queue = Promise.resolve();
-        queue.then(() => alert({ title: "Read-Only Template!", message: readOnlyMessage, okButtonText: "Ok" }))
-            .then(() => this._routerExtensions.navigate(["/cars"], {
-                clearHistory: true,
-                animated: true,
-                transition: {
-                    name: "slideBottom",
-                    duration: 200,
-                    curve: "ease"
-                }
-            }));
-    }
-
-    private initializeEditOptions(): void {
-        for (const classItem of carClassList) {
-            this._carClassOptions.push(classItem);
-        }
-
-        for (const doorItem of carDoorList) {
-            this._carDoorOptions.push(doorItem);
-        }
-
-        for (const seatItem of carSeatList) {
-            this._carSeatOptions.push(seatItem);
-        }
-
-        for (const transmissionItem of carTransmissionList) {
-            this._carTransmissionOptions.push(transmissionItem);
-        }
     }
 }

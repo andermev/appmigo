@@ -6,8 +6,17 @@ import { Notification } from "~/models/notification.model";
 
 const firebase = require("nativescript-plugin-firebase/app");
 
+const editableProperties = [
+    "imageUrl",
+    "comments"
+];
 @Injectable()
 export class NotificationService {
+
+    private static cloneUpdateModel(notification: Notification): object {
+        return editableProperties.reduce((a, e) =>
+            (a[e] = notification[e], a), {}); // tslint:disable-line:ban-comma-operator
+    }
     notification: Notification;
 
     private _notifications: Array<Notification> = [];
@@ -83,19 +92,31 @@ export class NotificationService {
      * End services to edit and create notification.
      */
 
+    update(notificationModel: Notification): Promise<any> {
+        const updateModel = NotificationService.cloneUpdateModel(notificationModel);
+
+        return firebase.update("/notifications/" + notificationModel.id, updateModel);
+    }
+
+    uploadImage(remoteFullPath: string, localFullPath: string): Promise<any> {
+        return firebase.uploadFile({
+            localFullPath,
+            remoteFullPath,
+            onProgress: null
+        });
+    }
+
     private handleSnapshot(snapshot: firestore.QuerySnapshot): Array<Notification> {
         this._notifications = [];
 
         if (snapshot) {
             snapshot.forEach((docSnap) => {
-                console.log("Document Firebase: " + `${docSnap.id} => ${JSON.stringify(docSnap.data())}`);
                 this._notifications.push(new Notification(docSnap.data()));
             });
         }
 
         return this._notifications;
     }
-    
 
     private handleErrors(error: Response): Observable<never> {
         return throwError(error);

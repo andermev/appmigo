@@ -9,6 +9,8 @@ export class Notification {
     countTimeReported: number;
     location: Location;
     creationDate: string;
+    imageUrl: string;
+    imageStoragePath: string;
 
     constructor(options: any) {
         this.id = options.id;
@@ -18,5 +20,7 @@ export class Notification {
         this.countTimeReported = options.countTimeReported;
         this.location = options.location;
         this.creationDate = options.creationDate;
+        this.imageUrl = options.imageUrl;
+        this.imageStoragePath = options.imageStoragePath;
     }
 }
