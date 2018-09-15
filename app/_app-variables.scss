@@ -31,10 +31,12 @@ $midnight-light: #14418B !default;
 $night-dark: #023141 !default;
 $night-light: #01526C !default;
 
-$page-icon-color: #D7D7D7 !default;
-
 // Sizes
-$page-content-placeholder-font-size: 20;
+$base-font-size: 11;
+
+$border-width: 1;
+$border-radius: 3;
+
 
 /**
  * Theme variables overrides
@@ -62,10 +64,10 @@ $side-drawer-background: #FFFFFF;
 
 // ActionBar
 $ab-background: $accent;
-$ab-color: #FFFFFF;
+$ab-color: $white;
 
 // Buttons
-$btn-color-inverse: #FFFFFF;
+$btn-color-inverse: $white;
 $btn-color: $accent;
 $btn-color-secondary: darken($btn-color, 10%);
 $btn-color-outline-highlighted: lighten($btn-color, 10%);

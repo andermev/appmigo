@@ -9,8 +9,8 @@ import { Notification } from "~/models/notification.model";
 @Component({
     moduleId: module.id,
     selector: "NotificationDetailEdit",
-    templateUrl: "./notification-detail-edit.component.html",
-    styleUrls: ["./notification-detail-edit.component.scss"]
+    templateUrl: "./notification-edit.component.html",
+    styleUrls: ["./notification-edit.component.scss"]
 })
 export class NotificationDetailEditComponent implements OnInit {
     private _notification: Notification;
@@ -38,7 +38,7 @@ export class NotificationDetailEditComponent implements OnInit {
         return this._isUpdating;
     }
 
-    get car(): Notification {
+    get notification(): Notification {
         return this._notification;
     }
 
@@ -49,6 +49,14 @@ export class NotificationDetailEditComponent implements OnInit {
     set notificationImageUrl(value: string) {
         this._notification.imageUrl = value;
         this._isNotificationImageDirty = true;
+    }
+
+    get comments(): string {
+        return this._notification.comments;
+    }
+
+    set comments(value: string) {
+        this._notification.comments = value;
     }
 
     onCancelButtonTap(): void {

@@ -11,6 +11,7 @@ export class Notification {
     creationDate: string;
     imageUrl: string;
     imageStoragePath: string;
+    comments: string;
 
     constructor(options: any) {
         this.id = options.id;
@@ -22,5 +23,6 @@ export class Notification {
         this.creationDate = options.creationDate;
         this.imageUrl = options.imageUrl;
         this.imageStoragePath = options.imageStoragePath;
+        this.comments = options.comments;
     }
 }

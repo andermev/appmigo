@@ -7,7 +7,6 @@ import { MyImageAddRemoveComponent } from "../../shared/my-image-add-remove/my-i
 import { NotificationService } from "../../shared/notification/notification.service";
 import { NotificationDetailEditComponent } from "../notification/notification-detail-edit/notification-edit.component";
 import { NotificationRoutingModule } from "../notification/notification-routing.module";
-import { NotificationComponent } from "../notification/notification.component";
 
 @NgModule({
     imports: [
@@ -17,7 +16,6 @@ import { NotificationComponent } from "../notification/notification.component";
         NativeScriptUIListViewModule
     ],
     declarations: [
-        NotificationComponent,
         NotificationDetailEditComponent,
         MyImageAddRemoveComponent
     ],
